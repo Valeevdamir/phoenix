@@ -2,7 +2,7 @@
 
 namespace Курсовая_работа_
 {
-    abstract class AbstractWorkDone : IWorkDone
+    public abstract class AbstractWorkDone : IWorkDone
     {
         public Driver driver;
         public Track track;

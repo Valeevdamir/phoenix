@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Курсовая_работа_
 {
-    class OneDriver : AbstractWorkDone
+   public class OneDriver : AbstractWorkDone
     {
 
         public OneDriver(Driver driver, Track track, DateTime dateTime)
@@ -21,7 +21,7 @@ namespace Курсовая_работа_
         public override double Pay()
         {
             if (track.Isaward)
-                return Award() + track.Payment+driver.Expirience * 10;
+                return Award() + track.Payment + driver.Expirience * 10;
             else
                 return track.Payment + driver.Expirience * 10;
         }

@@ -59,5 +59,59 @@ namespace Курсовая_работа_
                 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+
+                Truck truck = new Truck(textBox5.Text, Convert.ToInt32(textBox6.Text),
+                    Convert.ToInt32(textBox7.Text));
+
+                db.trucks.Add(truck);
+
+                db.SaveChanges();
+                MessageBox.Show("Данные внесены");
+
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            data.Rows.Clear();
+            
+            data.Columns[0].HeaderText = "Имя";
+            data.Columns[1].HeaderText = "Фамилия";
+            data.Columns[2].HeaderText = "Отчество";
+            data.Columns[3].HeaderText = "Опыт работы";
+            data.Columns[4].HeaderText = "";
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var users = db.drivers.ToList();
+
+                foreach (var u in users)
+                {
+                    data.Rows.Add(u.Name, u.Surname, u.Patronymic, u.Expirience);
+                }
+            }
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+
+                Driver driver = new Driver(textBox8.Text, textBox9.Text,
+                   textBox10.Text, Convert.ToInt32(textBox11.Text));
+
+                db.drivers.Add(driver);
+
+                db.SaveChanges();
+                MessageBox.Show("Данные внесены");
+
+            }
+
+        }
     }
 }

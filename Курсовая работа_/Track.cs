@@ -12,11 +12,12 @@ namespace Курсовая_работа_
         public int Day_value { get; private set; }
         public double Payment { get; private set; }
         public bool Isaward { get; private set; }
+        public Track() { }
         public Track(string name, double distance, int Day_value,
             double Payment,bool Isaward)
         {
             
-            if (distance > 0 && Payment > 0 && Day_value>0)
+            if (distance > 0 && Payment > 0 && Day_value > 0)
             {
                 this.Isaward = Isaward;
                 this.Name = name;
@@ -28,6 +29,11 @@ namespace Курсовая_работа_
                 throw new Exception("Неккоректная инициализация полей");
         }
 
+        public double Profit(Truck truck, AbstractWorkDone abstractWork)
+        {
+            double costs = truck.FuelConsumption / 100 * Distance * 45 + abstractWork.Pay();
+            return Payment - costs;
+        }
         
    
 
