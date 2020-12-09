@@ -13,7 +13,7 @@ namespace Курсовая_работа_
         public DbSet<Driver> drivers { get; set; }
         public DbSet<Track> tracks { get; set; }
         public DbSet<Truck> trucks { get; set; }
-
+        public DbSet<DATA> data { get; set; }
         public ApplicationContext()
         {
             Database.EnsureCreated();
@@ -21,7 +21,7 @@ namespace Курсовая_работа_
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=trump;Trusted_Connection=True;");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Курсовая_работа_
         public TwoDriver(Driver driver, Driver driver1, Track track, DateTime dateTime)
            : base(driver, track, dateTime)
         {
-
+            this.driver1 = driver1;
         }
 
         override public  double Award()
@@ -22,10 +22,10 @@ namespace Курсовая_работа_
         public override double Pay()
         {
             if (track.Isaward)
-                return Award()*2 + track.Payment * 2
+                return Award()*2 + track.Payment * 0.1*2
                     + driver.Expirience*10 + driver1.Expirience*10;
             else
-                return track.Payment * 2
+                return track.Payment * 2*0.1
                     + driver.Expirience * 10 + driver1.Expirience * 10;
         }
 
