@@ -21,9 +21,5 @@ namespace Курсовая_работа_
         abstract public double Pay();
         abstract public double Award();
         
-
-
-
-
     }
 }
