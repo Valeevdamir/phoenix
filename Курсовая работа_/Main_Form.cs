@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Курсовая_работа_
 {
-    public partial class Form1 : Form
+    public partial class Main_Form : Form
     {
-        public Form1()
+        public Main_Form()
         {
             InitializeComponent();
         }
@@ -44,48 +44,17 @@ namespace Курсовая_работа_
                 data.Columns[5].HeaderText = "Чистая прибыль";
                 data.Columns[6].HeaderText = "Дата отправки";
                 data.Columns[7].HeaderText = "Дата прибытия";
+                data.Columns[8].HeaderText = "Премия за маршрут";
                 var users = db.data.ToList();
 
                 foreach (var u in users)
                 {
-                    data.Rows.Add(u.track,u.driver,u.driver2,u.truck,u.payment,u.profit,u.departure_time,u.arrived_time);
+                    data.Rows.Add(u.track,u.driver,u.driver2,u.truck,u.payment,u.profit,u.departure_time,u.arrived_time, u.isaward);
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-
-                Track track = new Track(textBox1.Text, Convert.ToInt32(textBox2.Text),
-                    Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), checkBox1.Checked);
-               
-                db.tracks.Add(track);
-               
-                db.SaveChanges();
-                MessageBox.Show("Данные внесены");
-                
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-
-                Truck truck = new Truck(textBox5.Text, Convert.ToInt32(textBox6.Text),
-                    Convert.ToInt32(textBox7.Text));
-
-                db.trucks.Add(truck);
-                
-                db.SaveChanges();
-                MessageBox.Show("Данные внесены");
-
-            }
-
-        }
-
+       
         private void button4_Click(object sender, EventArgs e)
         {
             data.Rows.Clear();
@@ -108,23 +77,7 @@ namespace Курсовая_работа_
                 }
             }
         }
-        private void button6_Click(object sender, EventArgs e)
-        {
-           
-            using (ApplicationContext db = new ApplicationContext())
-            {
-
-                Driver driver = new Driver(textBox8.Text, textBox9.Text,
-                   textBox10.Text, Convert.ToInt32(textBox11.Text));
-
-                db.drivers.Add(driver);
-
-                db.SaveChanges();
-                MessageBox.Show("Данные внесены");
-
-            }
-
-        }
+       
 
         private void data_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -156,7 +109,13 @@ namespace Курсовая_работа_
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Form2 newForm = new Form2();
+            Calculate_Form newForm = new Calculate_Form();
+            newForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddTrack_Form newForm = new AddTrack_Form();
             newForm.Show();
         }
     }

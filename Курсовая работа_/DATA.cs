@@ -13,19 +13,13 @@ namespace Курсовая_работа_
         public string truck { get; set; }
         public int payment { set; get; }
         public int profit { get; set; }
+        public bool isaward { get; set; }
         public DateTime departure_time { get; set; }
         public DateTime arrived_time { get; set; }
 
-        //public DATA(string track, string driver, string truck, int payment, int profit)
-        //{
-        //    this.track = track ?? throw new ArgumentNullException(nameof(track));
-        //    this.driver = driver ?? throw new ArgumentNullException(nameof(driver)); 
-        //    this.truck = truck ?? throw new ArgumentNullException(nameof(truck));
-        //    this.payment = payment;
-        //    this.profit = profit;
-        //}
+       
         public DATA() { }
-        public DATA(string track, string driver, string driver2, string truck, int payment, int profit, DateTime depa,DateTime arri)
+        public DATA(string track, string driver, string driver2, string truck, int payment, int profit, DateTime depa, DateTime arri, bool isaward )
         {
             this.track = track ?? throw new ArgumentNullException(nameof(track));
             this.driver = driver ?? throw new ArgumentNullException(nameof(driver));
@@ -35,6 +29,7 @@ namespace Курсовая_работа_
             this.profit = profit;
             departure_time = depa;
             arrived_time = arri;
+            this.isaward = isaward;
         }
     }
 }

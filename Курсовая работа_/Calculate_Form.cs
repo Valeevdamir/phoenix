@@ -9,13 +9,14 @@ using System.Linq;
 
 namespace Курсовая_работа_
 {
-    public partial class Form2 : Form
+    public partial class Calculate_Form : Form
     {
         Track track;
         Truck truck;
         Driver driver1;
         Driver driver2;
         double profit;
+        DateTime outtime;
         DateTime dateTime1;
         public void zapisat()
         {
@@ -24,11 +25,11 @@ namespace Курсовая_работа_
             {
                 if (driver2 == null)
                 {
-                    dATA = new DATA(track.Name, driver1.Name, "", truck.Name, (int)track.Payment, (int)profit,DateTime.Now, dateTime1);
+                    dATA = new DATA(track.Name, driver1.Name, "", truck.Name, (int)track.Payment, (int)profit, outtime, dateTime1, track.Isaward);
                 }
                 else
                 {
-                    dATA = new DATA(track.Name, driver1.Name, driver2.Name, truck.Name, (int)track.Payment, (int)profit,DateTime.Now, dateTime1);
+                    dATA = new DATA(track.Name, driver1.Name, driver2.Name, truck.Name, (int)track.Payment, (int)profit, outtime, dateTime1, track.Isaward);
                 }
                 db.data.Add(dATA);
 
@@ -41,7 +42,7 @@ namespace Курсовая_работа_
         {
             return track.Profit(truck,abstractWork);
         }
-        public Form2()
+        public Calculate_Form()
         {
             InitializeComponent();
             using (ApplicationContext db = new ApplicationContext())
@@ -67,6 +68,7 @@ namespace Курсовая_работа_
                 var drivers = db.trucks.ToList();
                 foreach (var u in drivers)
                 {
+                    
                     comboBox4.Items.Add(u.Name);
                 }
             }
@@ -128,9 +130,43 @@ namespace Курсовая_работа_
             using ApplicationContext db = new ApplicationContext();
             var users = db.trucks.ToList();
             var u = users[comboBox4.SelectedIndex];
-            truck = new Truck(u.Name, u.FuelConsumption,u.Tonnage);
+            truck = new Truck(u.Name, u.FuelConsumption, u.Tonnage);
         }
-        
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem != null)
+            {
+                track.Isaward = checkBox1.Checked;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+                
+                MessageBox.Show("Сначала введите маршрут");
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            outtime = dateTimePicker1.Value;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                comboBox4.Items.Clear();
+                var drivers = db.trucks.ToList();
+                foreach (var u in drivers)
+                {
+                    
+                    comboBox4.Enabled = true;
+                    if (textBox1.Text!="")
+                    if (Convert.ToInt32(textBox1.Text) < u.Tonnage)
+                    comboBox4.Items.Add(u.Name);
+                }
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Курсовая_работа_
         public double Distance { get; private set; }
         public int Day_value { get; private set; }
         public double Payment { get; private set; }
-        public bool Isaward { get; private set; }
+        public bool Isaward { get; set; }
         public Track() { }
         public Track(string name, double distance, int Day_value,
             double Payment,bool Isaward)
