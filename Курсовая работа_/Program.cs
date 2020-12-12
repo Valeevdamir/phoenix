@@ -20,9 +20,6 @@ namespace Курсовая_работа_
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main_Form());
 
-           
-
-           
         }
     }
 }
