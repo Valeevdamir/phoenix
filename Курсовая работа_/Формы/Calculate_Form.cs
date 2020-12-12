@@ -154,19 +154,34 @@ namespace Курсовая_работа_
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            int z;
+            if ((Int32.TryParse(textBox1.Text, out z)))
             {
-                comboBox4.Items.Clear();
-                var drivers = db.trucks.ToList();
-                foreach (var u in drivers)
+
+                using (ApplicationContext db = new ApplicationContext())
                 {
-                    
-                    comboBox4.Enabled = true;
-                    if (textBox1.Text!="")
-                    if (Convert.ToInt32(textBox1.Text) < u.Tonnage)
-                    comboBox4.Items.Add(u.Name);
+                    comboBox4.Items.Clear();
+                    var drivers = db.trucks.ToList();
+                    foreach (var u in drivers)
+                    {
+
+                        comboBox4.Enabled = true;
+                        if (textBox1.Text != "")
+                            if (Convert.ToInt32(textBox1.Text) < u.Tonnage)
+                                comboBox4.Items.Add(u.Name);
+                    }
                 }
             }
+            else
+            {
+                textBox1.Clear();
+                MessageBox.Show("Используйте только числа","FATAL ERROR");
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

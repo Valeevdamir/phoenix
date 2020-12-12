@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Курсовая_работа_
 {
-    public partial class AddTrack_Form : Form
+    public partial class Add_Form : Form
     {
-        public AddTrack_Form()
+        public Add_Form()
         {
             InitializeComponent();
         }

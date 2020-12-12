@@ -1,6 +1,6 @@
 ﻿namespace Курсовая_работа_
 {
-    partial class AddTrack_Form
+    partial class Add_Form
     {
         /// <summary>
         /// Required designer variable.

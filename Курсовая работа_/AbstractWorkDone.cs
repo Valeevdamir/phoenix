@@ -2,6 +2,12 @@
 
 namespace Курсовая_работа_
 {
+    interface IWorkDone
+    {
+        public double Award();
+
+
+    }
     public abstract class AbstractWorkDone : IWorkDone
     {
         public Driver driver;

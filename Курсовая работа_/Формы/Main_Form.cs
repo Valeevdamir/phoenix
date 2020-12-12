@@ -67,6 +67,7 @@ namespace Курсовая_работа_
             data.Columns[5].HeaderText = "";
             data.Columns[6].HeaderText = "";
             data.Columns[7].HeaderText = "";
+            data.Columns[8].HeaderText = "";
             using (ApplicationContext db = new ApplicationContext())
             {
                 var users = db.drivers.ToList();
@@ -95,6 +96,7 @@ namespace Курсовая_работа_
             data.Columns[5].HeaderText = "";
             data.Columns[6].HeaderText = "";
             data.Columns[7].HeaderText = "";
+            data.Columns[8].HeaderText = "";
             using (ApplicationContext db = new ApplicationContext())
             {
                 var users = db.trucks.ToList();
@@ -115,8 +117,20 @@ namespace Курсовая_работа_
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AddTrack_Form newForm = new AddTrack_Form();
+            Add_Form newForm = new Add_Form();
             newForm.Show();
+        }
+
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            Report report = new Report();
+            report.Show();
         }
     }
 }
